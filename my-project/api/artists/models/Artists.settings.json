@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "artists",
+  "info": {
+    "name": "artists",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "article": {
+      "model": "article"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

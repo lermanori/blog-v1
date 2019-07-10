@@ -1,0 +1,21 @@
+{
+  "connection": "default",
+  "collectionName": "fashions",
+  "info": {
+    "name": "fashion",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "article": {
+      "model": "article"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}
