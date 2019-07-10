@@ -91,13 +91,13 @@ Morbi tincidunt sollicitudin orci et consectetur. Etiam nibh erat, efficitur qui
   components: { "app-carousel": carousel },
   created: async function() {
     this.artists_arr = await this.fetchData(
-      "http://strapi-rest-api.herokuapp.com/artists"
+      "https://strapi-rest-api.herokuapp.com/artists"
     );
     this.nightlife_arr = await this.fetchData(
-      "http://strapi-rest-api.herokuapp.com/artists"
+      "https://strapi-rest-api.herokuapp.com/artists"
     );
     this.fashion_arr = await this.fetchData(
-      "http://strapi-rest-api.herokuapp.com/artists"
+      "https://strapi-rest-api.herokuapp.com/artists"
     );
   }
 };
