@@ -10,7 +10,7 @@
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate",
     "build:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt build",
-    "generate:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate",
+    "generate:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate && rm docs && ren dist docs",
     "deploy": "git add . && git commit -m 'commit' && git push"
   },
   "dependencies": {
