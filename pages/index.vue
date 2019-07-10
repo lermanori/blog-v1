@@ -3,8 +3,9 @@
     <v-layout justify-center style="min-height:30vh">
       <h1 id="hero" class="mt-5 text-xs-center">THE CITY OF XXX</h1>
     </v-layout>
-
-    <app-carousel :arr="Artist_Arr" v-if="Artist_Arr.length > 0" />
+    <template v-if="Artist_Arr.length > 0">
+      <app-carousel :arr="Artist_Arr" />
+    </template>
     <app-carousel :arr="NightLife_Arr" v-if="NightLife_Arr.length > 0" />
     <app-carousel :arr="Fashion_Arr" v-if="Fashion_Arr.length > 0" />
   </v-container>
@@ -43,7 +44,7 @@ Morbi tincidunt sollicitudin orci et consectetur. Etiam nibh erat, efficitur qui
       nightlife_arr: [],
       fashion_arr: [],
 
-      baseURL: "http://localhost:1337"
+      baseURL: "http://strapi-rest-api.herokuapp.com/"
     };
   },
   computed: {
@@ -85,6 +86,7 @@ Morbi tincidunt sollicitudin orci et consectetur. Etiam nibh erat, efficitur qui
           };
         }
       );
+      console.log(arr);
       return arr;
     }
   },
@@ -94,10 +96,10 @@ Morbi tincidunt sollicitudin orci et consectetur. Etiam nibh erat, efficitur qui
       "https://strapi-rest-api.herokuapp.com/artists"
     );
     this.nightlife_arr = await this.fetchData(
-      "https://strapi-rest-api.herokuapp.com/artists"
+      "https://strapi-rest-api.herokuapp.com/nightlives"
     );
     this.fashion_arr = await this.fetchData(
-      "https://strapi-rest-api.herokuapp.com/artists"
+      "https://strapi-rest-api.herokuapp.com/fashions"
     );
   }
 };

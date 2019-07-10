@@ -10,7 +10,7 @@
     <transition :enter-active-class="enter_class" :leave-active-class="leave_class" mode="out-in">
       <app-item
         :color="arr[Index].color"
-        :key="arr[Index].color"
+        :key="arr[Index].name"
         :name="arr[Index].name"
         :body="arr[Index].body"
         :issue="arr[Index].issue"
@@ -39,7 +39,7 @@ export default {
       enter_active_class: "animated fadeInLeft",
       leave_active_class: "animated fadeOutLeft",
 
-      index: 1
+      index: this.arr.length - 1
     };
   },
   props: ["arr"],
