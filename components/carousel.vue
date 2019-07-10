@@ -39,7 +39,7 @@ export default {
       enter_active_class: "animated fadeInLeft",
       leave_active_class: "animated fadeOutLeft",
 
-      index: 0
+      index: 1
     };
   },
   props: ["arr"],
