@@ -90,9 +90,15 @@ Morbi tincidunt sollicitudin orci et consectetur. Etiam nibh erat, efficitur qui
   },
   components: { "app-carousel": carousel },
   created: async function() {
-    this.artists_arr = await this.fetchData("http://localhost:1337/artists");
-    this.nightlife_arr = await this.fetchData("http://localhost:1337/artists");
-    this.fashion_arr = await this.fetchData("http://localhost:1337/artists");
+    this.artists_arr = await this.fetchData(
+      "http://strapi-rest-api.herokuapp.com/artists"
+    );
+    this.nightlife_arr = await this.fetchData(
+      "http://strapi-rest-api.herokuapp.com/artists"
+    );
+    this.fashion_arr = await this.fetchData(
+      "http://strapi-rest-api.herokuapp.com/artists"
+    );
   }
 };
 </script>
