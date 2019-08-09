@@ -36,17 +36,42 @@ export default {
 Curabitur interdum augue in est lacinia malesuada. Pellentesque vehicula neque ut interdum lobortis. Praesent ipsum ipsum, accumsan at interdum vel, venenatis a nulla. Ut ullamcorper vehicula ex ac scelerisque. Vivamus aliquet scelerisque ante, sit amet facilisis ex viverra ut. Sed dictum nibh a urna commodo, at cursus nunc placerat. Nulla sit amet vestibulum ex, eget varius risus. Integer pharetra ante id est convallis laoreet. Integer nec laoreet arcu.
 Morbi tincidunt sollicitudin orci et consectetur. Etiam nibh erat, efficitur quis quam sed, maximus sollicitudin neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse non sapien est. Mauris et dapibus lorem. Morbi pharetra eu velit sit amet tristique. Ut auctor arcu quis sem interdum, et congue leo elementum. Integer vulputate sit amet nulla eget pretium. Curabitur vel mi eu nisl congue feugiat. Nam id est suscipit magna finibus scelerisque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent aliquet lobortis tellus a scelerisque. Maecenas ornare interdum lectus a consectetur. Pellentesque vitae eros fermentum, consectetur risus sed, sodales ligula.`,
           issue: 1,
-          src:
-            "http://localhost:1337/uploads/94588e64873849659e3fc96d5312dd65.png"
+          src: "https://picsum.photos/200/300"
         }
       ],
       artists_arr: [],
       nightlife_arr: [],
       fashion_arr: [],
 
-      baseURL: "http://strapi-rest-api.herokuapp.com/"
+      baseURL:
+        process.env.DEPLOY_ENV === "GH_PAGES"
+          ? "http://strapi-rest-api.herokuapp.com"
+          : "http://localhost:1337"
     };
   },
+  asyncData(context) {
+    return context.app.$storyapi
+      .get("cdn/stories", {
+        version: "draft",
+        starts_with: "page/"
+      })
+      .then(res => {
+        return {
+          posts: res.data.stories.map(post => {
+            return {
+              color: post.content.preview_color,
+              name: post.content.Title,
+              body: post.content.preview_text,
+              issue: post.content.issue_number,
+              src: post.content.body[0].image,
+              id: post.slug,
+              type: post.content.type
+            };
+          })
+        };
+      });
+  },
+
   computed: {
     Arr: function() {
       return this.arr;
@@ -61,46 +86,12 @@ Morbi tincidunt sollicitudin orci et consectetur. Etiam nibh erat, efficitur qui
       return this.fashion_arr;
     }
   },
-  methods: {
-    async fetchData(url) {
-      let { data } = await this.$axios.get(url);
-      data = data.map(arg => {
-        return arg.article;
-      });
-      let arr = [];
-      let baseURL = this.baseURL;
-      arr = data.map(
-        ({
-          headline,
-          article_body,
-          background,
-          issueNumber,
-          article_image
-        }) => {
-          return {
-            color: background,
-            name: headline,
-            body: article_body,
-            issue: issueNumber,
-            src: baseURL + article_image[0].url
-          };
-        }
-      );
-      console.log(arr);
-      return arr;
-    }
-  },
+  methods: {},
   components: { "app-carousel": carousel },
   created: async function() {
-    this.artists_arr = await this.fetchData(
-      "https://strapi-rest-api.herokuapp.com/artists"
-    );
-    this.nightlife_arr = await this.fetchData(
-      "https://strapi-rest-api.herokuapp.com/nightlives"
-    );
-    this.fashion_arr = await this.fetchData(
-      "https://strapi-rest-api.herokuapp.com/fashions"
-    );
+    this.artists_arr = this.posts.filter(post => post.type == "artist");
+    this.nightlife_arr = this.posts.filter(post => post.type == "nightlife");
+    this.fashion_arr = this.posts.filter(post => post.type == "fashion");
   }
 };
 </script>

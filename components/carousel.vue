@@ -15,6 +15,8 @@
         :body="arr[Index].body"
         :issue="arr[Index].issue"
         :src="arr[Index].src"
+        :id="arr[Index].id"
+        :type="arr[index].type"
         :buttons="Math.min(arr.length,3)"
         @oldest="changeIndex(arr.length -3 )"
         @mid="changeIndex(arr.length -2 )"

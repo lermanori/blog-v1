@@ -64,8 +64,17 @@ module.exports = {
     '@nuxtjs/vuetify',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@neneos/nuxt-animate.css'
+    '@neneos/nuxt-animate.css',
+    ['@nuxtjs/markdownit'],
+
+    ["storyblok-nuxt", {
+      accessToken: "t0I0dmOF7GWgrM5dVtSN7gtt",
+      cacheProvider: "memory"
+    }]
   ],
+  markdownit: {
+    injected: true,
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

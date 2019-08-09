@@ -2293,6 +2293,8 @@
   !*** external {"commonjs":"vue","commonjs2":"vue","amd":"vue","root":"Vue"} ***!
   \******************************************************************************/
 
+/*! https://mths.be/punycode v1.4.1 by @mathias */
+
 /*!
  *
  * Copyright 2009-2017 Kris Kowal under the terms of the MIT
