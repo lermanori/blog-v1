@@ -10,14 +10,7 @@
     </v-layout>
     <v-layout align-center justify-center>
       <nuxt-link :to="posts[0].id" style="text-decoration:none;">
-        <v-img
-          contains
-          :src="posts[0].img_src"
-          aspect-ratio="1"
-          class="grey lighten-2 mx-5 mt-5"
-          max-width="500"
-          max-height="300"
-        >
+        <v-img contains :src="posts[0].img_src" class="grey lighten-2 mx-3 mt-5" max-height="300">
           <h1 class="white--text pl-2" id="issuenum">ISSUE NU. {{posts[0].issueNumber}}</h1>
           <v-layout column fill-height class="lightbox white--text">
             <v-spacer></v-spacer>
@@ -32,7 +25,7 @@
         </v-img>
       </nuxt-link>
     </v-layout>
-    <v-container fluid grid-list-xl>
+    <v-container fluid grid-list-xl class="mt-2">
       <v-layout row wrap justify-between>
         <template v-for="(artist_post,index) in bricks">
           <v-flex xs6 class :key="index">
