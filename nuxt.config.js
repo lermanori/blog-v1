@@ -30,11 +30,6 @@ module.exports = {
       }
     ],
     link: [{
-        rel: 'icon',
-        type: 'image/x-icon',
-        href: '/favicon.ico'
-      },
-      {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
       },
@@ -57,7 +52,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/hotjar'],
+  plugins: [],
   /*
    ** Nuxt.js modules
    */
@@ -67,6 +62,10 @@ module.exports = {
     '@nuxtjs/axios',
     '@neneos/nuxt-animate.css',
     ['@nuxtjs/markdownit'],
+    ['@netsells/nuxt-hotjar', {
+      id: '1439571',
+      sv: '6',
+    }],
 
     ["storyblok-nuxt", {
       accessToken: "t0I0dmOF7GWgrM5dVtSN7gtt",
