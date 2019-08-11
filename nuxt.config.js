@@ -41,7 +41,8 @@ module.exports = {
 
 
 
-    ]
+    ],
+
   },
   /*
    ** Customize the progress-bar color
@@ -56,7 +57,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/hotjar'],
   /*
    ** Nuxt.js modules
    */
