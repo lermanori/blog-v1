@@ -66,7 +66,9 @@ module.exports = {
       id: '1439571',
       sv: '6',
     }],
-
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-134774580-2'
+    }],
     ["storyblok-nuxt", {
       accessToken: "t0I0dmOF7GWgrM5dVtSN7gtt",
       cacheProvider: "memory"
