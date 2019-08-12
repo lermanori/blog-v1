@@ -6,7 +6,7 @@ const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
   }
 } : {}
 
-import storyApi from 'storyblok-nuxt'
+const axios = require('axios')
 
 
 module.exports = {
@@ -108,7 +108,26 @@ module.exports = {
      */
     extend(config, ctx) {}
   },
-  generate: {
 
+
+  // Using Links API
+  generate: {
+    routes: function (callback) {
+      const token = `t0I0dmOF7GWgrM5dVtSN7gtt`
+      const version = 'draft'
+
+
+      // other routes that are not in Storyblok with their slug.
+      let routes = ['/'] // adds / directly
+
+
+      // Call for all Links using the Links API: https://www.storyblok.com/docs/Delivery-Api/Links
+      axios.get("https://api.storyblok.com/v1/cdn/stories/?starts_with=page/&token=t0I0dmOF7GWgrM5dVtSN7gtt&version=draft").then(({
+        data
+      }) => {
+        routes = data.stories.map(arg => arg.path);
+        callback(null, routes)
+      })
+    }
   }
 }
