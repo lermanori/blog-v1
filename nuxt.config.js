@@ -109,13 +109,6 @@ module.exports = {
     extend(config, ctx) {}
   },
   generate: {
-    routes: function () {
-      return storyApi.get("cdn/stories", {
-        version: "draft",
-        starts_with: "page/"
-      }).then((data) => {
-        console.log(data)
-      });
-    }
+
   }
 }
