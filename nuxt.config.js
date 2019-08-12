@@ -6,6 +6,8 @@ const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
   }
 } : {}
 
+import storyApi from 'storyblok-nuxt'
+
 
 module.exports = {
   ...routerBase,
@@ -105,5 +107,15 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  generate: {
+    routes: function () {
+      return storyApi.get("cdn/stories", {
+        version: "draft",
+        starts_with: "page/"
+      }).then((data) => {
+        console.log(data)
+      });
+    }
   }
 }
