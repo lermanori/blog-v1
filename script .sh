@@ -1,0 +1,1 @@
+npm run generate:gh-pages ; rm docs ; ren dist docs ; npm run deploy

@@ -110,18 +110,9 @@ module.exports = {
   },
 
 
-  // Using Links API
   generate: {
     routes: function (callback) {
-      const token = `t0I0dmOF7GWgrM5dVtSN7gtt`
-      const version = 'draft'
-
-
-      // other routes that are not in Storyblok with their slug.
-      let routes = ['/'] // adds / directly
-
-
-      // Call for all Links using the Links API: https://www.storyblok.com/docs/Delivery-Api/Links
+      let routes = [];
       axios.get("https://api.storyblok.com/v1/cdn/stories/?starts_with=page/&token=t0I0dmOF7GWgrM5dVtSN7gtt&version=draft").then(({
         data
       }) => {
